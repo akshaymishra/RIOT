@@ -43,11 +43,17 @@ extern "C" {
 #endif
 
 /**
- * @brief   Maximum length for an interface name
+ * @defgroup net_netif_conf Network interfaces compile configurations
+ * @ingroup  config
+ * @{
  */
-#ifndef NETIF_NAMELENMAX
-#define NETIF_NAMELENMAX    (8U)
+/**
+ * @brief    Maximum length for an interface name
+ */
+#ifndef CONFIG_NETIF_NAMELENMAX
+#define CONFIG_NETIF_NAMELENMAX    (8U)
 #endif
+/** @} */
 
 /**
  * @brief Network interface descriptor.
@@ -75,19 +81,29 @@ netif_t *netif_iter(netif_t *last);
  * @brief   Gets name of an interface
  *
  * @pre `name != NULL`
- * @pre name holds at least @ref NETIF_NAMELENMAX characters
+ * @pre name holds at least @ref CONFIG_NETIF_NAMELENMAX characters
  *
  * @note    Supposed to be implemented by the networking module. `name` must be
  *          zero-terminated in the result!
  *
  * @param[in] netif A network interface.
  * @param[out] name The name of the interface. Must not be `NULL`. Must at least
- *                  hold @ref NETIF_NAMELENMAX bytes.
+ *                  hold @ref CONFIG_NETIF_NAMELENMAX bytes.
  *
  * @return  length of @p name on success
  */
 
 int netif_get_name(netif_t *netif, char *name);
+
+/**
+ * @brief   Gets the numeric identifier of an interface
+ *
+ * @param[in] netif A network interface.
+ *
+ * @return  The numeric identifier of an interface
+ * @return  -1 if @p netif is not registered
+ */
+int16_t netif_get_id(const netif_t *netif);
 
 /**
  * @brief   Gets interface by name
@@ -98,10 +114,20 @@ int netif_get_name(netif_t *netif, char *name);
  * @param[in] name  The name of an interface as a zero-terminated. Must not be
  *                  `NULL`.
  *
- * @return  The identifier of the interface on success.
+ * @return  The interface on success.
  * @return  NULL if no interface is named @p name.
  */
 netif_t *netif_get_by_name(const char *name);
+
+/**
+ * @brief   Gets interface by a numeric identifier.
+ *
+ * @param[in] id  A numeric identifier.
+ *
+ * @return  The interface on success.
+ * @return  NULL if no interface with identifier @p id.
+ */
+netif_t *netif_get_by_id(int16_t id);
 
 /**
  * @brief   Gets option from an interface

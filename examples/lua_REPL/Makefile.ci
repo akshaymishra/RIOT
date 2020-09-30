@@ -44,6 +44,7 @@ BOARD_INSUFFICIENT_MEMORY := \
     nucleo-f303k8 \
     nucleo-f334r8 \
     nucleo-f410rb \
+    nucleo-g070rb \
     nucleo-l031k6 \
     nucleo-l053r8 \
     nucleo-l073rz \
@@ -75,11 +76,13 @@ BOARD_INSUFFICIENT_MEMORY := \
     sodaq-explorer \
     sodaq-one \
     sodaq-sara-aff \
+    sodaq-sara-sff \
     spark-core \
     stk3600 \
     stm32f030f4-demo \
     stm32f0discovery \
     stm32f3discovery \
     stm32l0538-disco \
+    wemos-zero \
     yunjia-nrf51822 \
     #

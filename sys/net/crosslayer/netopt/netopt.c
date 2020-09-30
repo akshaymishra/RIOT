@@ -41,6 +41,7 @@ static const char *_netopt_strmap[] = {
     [NETOPT_IPV6_FORWARDING]       = "NETOPT_IPV6_FORWARDING",
     [NETOPT_IPV6_SND_RTR_ADV]      = "NETOPT_IPV6_SND_RTR_ADV",
     [NETOPT_TX_POWER]              = "NETOPT_TX_POWER",
+    [NETOPT_PDU_SIZE]              = "NETOPT_PDU_SIZE",
     [NETOPT_MAX_PDU_SIZE]          = "NETOPT_MAX_PDU_SIZE",
     [NETOPT_PRELOADING]            = "NETOPT_PRELOADING",
     [NETOPT_PROMISCUOUSMODE]       = "NETOPT_PROMISCUOUSMODE",
@@ -110,6 +111,8 @@ static const char *_netopt_strmap[] = {
     [NETOPT_OQPSK_RATE]            = "NETOPT_O-QPSK_RATE",
     [NETOPT_MR_OQPSK_CHIPS]        = "NETOPT_MR-O-QPSK_CHIPS",
     [NETOPT_MR_OQPSK_RATE]         = "NETOPT_MR-O-QPSK_RATE",
+    [NETOPT_MR_OFDM_OPTION]        = "NETOPT_MR-OFDM_OPTION",
+    [NETOPT_MR_OFDM_MCS]           = "NETOPT_MR-OFDM_MCS",
     [NETOPT_CHANNEL_SPACING]       = "NETOPT_CHANNEL_SPACING",
     [NETOPT_SYNCWORD]              = "NETOPT_SYNCWORD",
     [NETOPT_RANDOM]                = "NETOPT_RANDOM",
@@ -118,6 +121,7 @@ static const char *_netopt_strmap[] = {
     [NETOPT_DEMOD_MARGIN]          = "NETOPT_DEMOD_MARGIN",
     [NETOPT_NUM_GATEWAYS]          = "NETOPT_NUM_GATEWAYS",
     [NETOPT_LINK_CHECK]            = "NETOPT_LINK_CHECK",
+    [NETOPT_RSSI]                  = "NETOPT_RSSI",
     [NETOPT_NUMOF]                 = "NETOPT_NUMOF",
 };
 

@@ -65,7 +65,7 @@ int32_t qdec_init(qdec_t qdec, qdec_mode_t mode, qdec_cb_t cb, void *arg)
     dev(qdec)->SMCR = 0;
     dev(qdec)->CCER = 0;
     for (i = 0; i < QDEC_CHAN; i++) {
-        dev(qdec)->CCR[i] = 0;
+        TIM_CHAN(qdec, i) = 0;
     }
 
     /* Count on A (TI1) signal edges, B (TI2) signal edges or both,
@@ -91,14 +91,16 @@ int32_t qdec_init(qdec_t qdec, qdec_mode_t mode, qdec_cb_t cb, void *arg)
 
     /* Reset configuration and CC channels */
     for (i = 0; i < QDEC_CHAN; i++) {
-        dev(qdec)->CCR[i] = 0;
+        TIM_CHAN(qdec, i) = 0;
     }
 
     /* Configure the used pins */
     i = 0;
     while ((i < QDEC_CHAN) && (qdec_config[qdec].chan[i].pin != GPIO_UNDEF)) {
         gpio_init(qdec_config[qdec].chan[i].pin, GPIO_IN);
+#ifndef CPU_FAM_STM32F1
         gpio_init_af(qdec_config[qdec].chan[i].pin, qdec_config[qdec].af);
+#endif
         i++;
     }
 
@@ -112,9 +114,13 @@ int32_t qdec_init(qdec_t qdec, qdec_mode_t mode, qdec_cb_t cb, void *arg)
     isr_ctx[qdec].cb = cb;
     isr_ctx[qdec].arg = arg;
 
-    /* Enable the qdec's interrupt */
-    NVIC_EnableIRQ(qdec_config[qdec].irqn);
-    dev(qdec)->DIER |= TIM_DIER_UIE;
+    /* Enable the qdec's interrupt only if there is a callback provided */
+    if (cb) {
+        NVIC_EnableIRQ(qdec_config[qdec].irqn);
+        dev(qdec)->DIER |= TIM_DIER_UIE;
+    } else {
+        dev(qdec)->DIER &= ~TIM_DIER_UIE;
+    }
 
     /* Reset counter and start qdec */
     qdec_start(qdec);
