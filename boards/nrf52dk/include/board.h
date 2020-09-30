@@ -30,16 +30,16 @@ extern "C" {
  * @name    LED pin configuration
  * @{
  */
-#define LED0_PIN            GPIO_PIN(0, 17)
-#define LED1_PIN            GPIO_PIN(0, 18)
+#define LED0_PIN            GPIO_PIN(0, 11)
+#define LED1_PIN            GPIO_PIN(0, 12)
 #define LED2_PIN            GPIO_PIN(0, 19)
-#define LED3_PIN            GPIO_PIN(0, 20)
+#define LED3_PIN            GPIO_PIN(0, 29)
 
 #define LED_PORT            (NRF_P0)
-#define LED0_MASK           (1 << 17)
-#define LED1_MASK           (1 << 18)
+#define LED0_MASK           (1 << 11)
+#define LED1_MASK           (1 << 12)
 #define LED2_MASK           (1 << 19)
-#define LED3_MASK           (1 << 20)
+#define LED3_MASK           (1 << 29)
 #define LED_MASK            (LED0_MASK | LED1_MASK | LED2_MASK | LED3_MASK)
 
 #define LED0_ON             (LED_PORT->OUTCLR = LED0_MASK)
@@ -57,6 +57,7 @@ extern "C" {
 #define LED3_ON             (LED_PORT->OUTCLR = LED3_MASK)
 #define LED3_OFF            (LED_PORT->OUTSET = LED3_MASK)
 #define LED3_TOGGLE         (LED_PORT->OUT   ^= LED3_MASK)
+
 /** @} */
 
 /**

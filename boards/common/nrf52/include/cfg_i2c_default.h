@@ -33,8 +33,8 @@ extern "C" {
 static const i2c_conf_t i2c_config[] = {
     {
         .dev = NRF_TWIM1,
-        .scl = 27,
-        .sda = 26,
+        .scl = 14,
+        .sda = 13,
         .speed = I2C_SPEED_NORMAL
     }
 };

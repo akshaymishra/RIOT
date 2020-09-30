@@ -33,7 +33,7 @@ extern "C" {
  */
 #define CLOCK_HFCLK         (32U)           /* set to  0: internal RC oscillator
                                              *        32: 32MHz crystal */
-#define CLOCK_LFCLK         (1)             /* set to  0: internal RC oscillator
+#define CLOCK_LFCLK         (0)             /* set to  0: internal RC oscillator
                                              *         1: 32.768 kHz crystal
                                              *         2: derived from HFCLK */
 /** @} */
